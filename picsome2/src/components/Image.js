@@ -40,13 +40,14 @@ import PropTypes from "prop-types"
 
 function Image({className, img}){
     const [isHovered, setIsHovered] = useState(false)
-    const {toggleFavorite,addToCart, cartItems} = useContext(Context)
+    const {toggleFavorite,addToCart,removeFromCart, cartItems} = useContext(Context)
    
 
     function cartIcon() {
         const alreadyInCart = cartItems.some(item => item.id === img.id)
         if(alreadyInCart) {
-            return <i className="ri-shopping-cart-fill cart"></i>
+            
+            return <i className="ri-shopping-cart-fill cart" onClick = {()=> removeFromCart(img.id)}></i>
         } else if(isHovered) {
             return <i className="ri-add-circle-line cart" onClick={() => addToCart(img)}></i>
         }

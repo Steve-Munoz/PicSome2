@@ -35,6 +35,10 @@ function ContextProvider(props){
         setCartItems(prevItems =>[...prevItems, newItem])
         console.log(cartItems)
     }
+
+    function removeFromCart(id){
+        setCartItems(prevItems => prevItems.filter(item => item.id !== id))
+    }
     //setting an emptyarray as a second argument which tells react that my effect
     //doesnt depened on any values from props or state, so it never needs to re-run
     //If you want to run an effect and clean it up only once (on mount and unmount), 
@@ -43,7 +47,7 @@ function ContextProvider(props){
     //componentDidMount and componentWillUnmount mental model,
 
     return(
-        <Context.Provider value = {{allPhotos, toggleFavorite, addToCart,  cartItems}}>
+        <Context.Provider value = {{allPhotos, toggleFavorite, addToCart, removeFromCart, cartItems}}>
             {props.children}
         </Context.Provider>
     )
