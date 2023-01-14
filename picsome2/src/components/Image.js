@@ -82,3 +82,4 @@ Image.propTypes = {
     })
 }
 export default Image
+
